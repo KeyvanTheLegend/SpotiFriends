@@ -17,6 +17,11 @@ struct ContentView: View {
                 .clipped()
                 .aspectRatio(contentMode: .fit)
             
+            Text("Spotify Friends")
+                .padding(1)
+                .foregroundColor(.green)
+                .font(.system(size: 16, weight: .bold, design: .rounded))
+            
             Spacer()
         }
     }
