@@ -22,8 +22,7 @@ struct ContentView: View {
                 .foregroundColor(.green)
                 .font(.system(size: 16, weight: .bold, design: .rounded))
             
-            Spacer()
-        }
+        }.background(Color.BackgroundColor)
     }
 }
 
