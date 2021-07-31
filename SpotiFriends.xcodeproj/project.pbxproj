@@ -13,6 +13,7 @@
 		C012145026B5B69E00A2AD10 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C012144F26B5B69E00A2AD10 /* Preview Assets.xcassets */; };
 		C012145B26B5B69F00A2AD10 /* SpotiFriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C012145A26B5B69F00A2AD10 /* SpotiFriendsTests.swift */; };
 		C012146626B5B69F00A2AD10 /* SpotiFriendsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C012146526B5B69F00A2AD10 /* SpotiFriendsUITests.swift */; };
+		C0A8DB7526B5D5190093A653 /* Color+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8DB7326B5D4E90093A653 /* Color+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		C012146126B5B69F00A2AD10 /* SpotiFriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotiFriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C012146526B5B69F00A2AD10 /* SpotiFriendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotiFriendsUITests.swift; sourceTree = "<group>"; };
 		C012146726B5B69F00A2AD10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0A8DB7326B5D4E90093A653 /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				C012144826B5B69D00A2AD10 /* SpotiFriendsApp.swift */,
 				C012144A26B5B69D00A2AD10 /* ContentView.swift */,
+				C0A8DB7326B5D4E90093A653 /* Color+extension.swift */,
 				C012144C26B5B69E00A2AD10 /* Assets.xcassets */,
 				C012145126B5B69E00A2AD10 /* Info.plist */,
 				C012144E26B5B69E00A2AD10 /* Preview Content */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C012144B26B5B69D00A2AD10 /* ContentView.swift in Sources */,
+				C0A8DB7526B5D5190093A653 /* Color+extension.swift in Sources */,
 				C012144926B5B69D00A2AD10 /* SpotiFriendsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
