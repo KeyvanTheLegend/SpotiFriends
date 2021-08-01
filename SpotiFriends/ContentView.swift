@@ -28,7 +28,8 @@ struct ContentView: View {
             
             TextField("Username", text : $username)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                .padding([.leading,.trailing],32)
+                .padding(.bottom, 16)
                 .foregroundColor(.black)
                 .accentColor(.green)
                 .font(
@@ -40,8 +41,8 @@ struct ContentView: View {
                 )
                 .multilineTextAlignment(.center)
             SecureField("Password", text : $password)
+                .padding([.leading,.trailing],32)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding([.leading,.trailing],16)
                 .foregroundColor(.black)
                 .accentColor(.green)
                 .font(
@@ -53,9 +54,32 @@ struct ContentView: View {
                 )
                 .multilineTextAlignment(.center)
                 .textContentType(.password)
+                .padding(.bottom, 32)
+            Button(action: {
+                
+            }, label: {
+                Text("Login")
+            })
+            .padding(EdgeInsets(top: 12, leading: 64, bottom: 12, trailing: 64))
+            .background(Color.green)
+            .foregroundColor(.black)
+            .cornerRadius(8)
+            .clipped()
+            Spacer()
+            HStack(alignment: .center, spacing: 8, content: {
+                Text("Don't have an account ?")
+                    .foregroundColor(.white)
+                Button(action: {
+                    
+                }, label: {
+                    Text("Signup")
+                        .foregroundColor(.green)
+                        .padding(3)
+                })
+            })
             
             Spacer()
-            Spacer()
+            
             
         }.background(Color.BackgroundColor)
         .ignoresSafeArea()
