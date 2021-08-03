@@ -22,6 +22,7 @@ struct HomeView : View {
                 VStack(alignment: .leading, spacing: nil, content: {
                     MoodeView()
                     TopPlayedSongsViewGroup()
+                    SeeMoreButton()
 
                 })
                 .background(Color.LightGray)
@@ -128,5 +129,17 @@ struct TopPlayedSongsViewGroup : View{
         .onAppear(perform: {
             UITableView.appearance().contentInset.top = -35
         })
+    }
+}
+struct SeeMoreButton : View {
+    var body: some View {
+        Button("See More") {
+            
+        }.frame(width: 320, height: 60, alignment: .center)
+        .background(Color.green)
+        .foregroundColor(.white)
+        .cornerRadius(12)
+        .font(.headline)
+        .padding([.leading,.trailing,.bottom],16)
     }
 }
