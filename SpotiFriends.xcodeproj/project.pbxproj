@@ -48,6 +48,7 @@
 		C012146126B5B69F00A2AD10 /* SpotiFriendsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotiFriendsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C012146526B5B69F00A2AD10 /* SpotiFriendsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotiFriendsUITests.swift; sourceTree = "<group>"; };
 		C012146726B5B69F00A2AD10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C017962926B968A400798D8B /* HomeView copy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView copy.swift"; sourceTree = "<group>"; };
 		C086377A26B9369600B34BAC /* TextField+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+extension.swift"; sourceTree = "<group>"; };
 		C086377C26B9383500B34BAC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C0A8DB7326B5D4E90093A653 /* Color+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+extension.swift"; sourceTree = "<group>"; };
@@ -104,6 +105,7 @@
 				C012144826B5B69D00A2AD10 /* SpotiFriendsApp.swift */,
 				C012144A26B5B69D00A2AD10 /* LoginView.swift */,
 				C086377C26B9383500B34BAC /* HomeView.swift */,
+				C017962926B968A400798D8B /* HomeView copy.swift */,
 				C086377A26B9369600B34BAC /* TextField+extension.swift */,
 				C0A8DB7326B5D4E90093A653 /* Color+extension.swift */,
 				C012144C26B5B69E00A2AD10 /* Assets.xcassets */,
