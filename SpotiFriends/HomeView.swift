@@ -12,7 +12,16 @@ struct HomeView : View {
         NavigationView{
             VStack(alignment: .leading, spacing: 0, content: {
                 HeaderGroupView()
-               
+                
+                VStack(alignment: .leading, spacing: nil, content: {
+                    MoodeView()
+
+                })
+                .background(Color.LightGray)
+                .cornerRadius(12)
+                .padding([.leading,.trailing],16)
+                .clipped()
+                Spacer()
             })
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
             .background(Color.GradientBackground)
@@ -41,5 +50,16 @@ struct HeaderGroupView : View {
             Spacer()
         })
         .padding(.top,32)
+    }
+}
+struct MoodeView : View {
+    var body: some View {
+        Image("")
+            .resizable()
+            .frame(width: 315, height: 150, alignment: .center)
+            .background(Color.BackgroundColor.opacity(0.7))
+            .cornerRadius(12)
+            .aspectRatio(contentMode: .fill)
+            .padding(16)
     }
 }
