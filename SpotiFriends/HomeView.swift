@@ -18,12 +18,10 @@ struct HomeView : View {
         NavigationView{
             VStack(alignment: .leading, spacing: 0, content: {
                 HeaderGroupView()
-                
                 VStack(alignment: .leading, spacing: nil, content: {
                     MoodeView()
                     TopPlayedSongsViewGroup()
                     SeeMoreButton()
-
                 })
                 .background(Color.LightGray)
                 .cornerRadius(12)
@@ -50,14 +48,14 @@ struct HomeView_Previews: PreviewProvider {
 struct HeaderGroupView : View {
     var body: some View{
         HStack(content: {
-            Text("Today Frinds Mood")
+            Text("Friends")
                 .padding(16)
                 .foregroundColor(.white)
-                .font(.title)
+                .font(.title.weight(.bold))
             
             Spacer()
         })
-        .padding(.top,32)
+        .padding(.top,64)
     }
 }
 struct MoodeView : View {
@@ -82,7 +80,6 @@ struct TopPlayedSongsViewGroup : View{
                 Image("spotifyicon")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .foregroundColor(Color.red)
                     .frame(width: 50, height: 50, alignment: .center)
                 VStack (alignment: .leading, spacing: 4, content: {
                     
@@ -97,7 +94,6 @@ struct TopPlayedSongsViewGroup : View{
                 Image("spotifyicon")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .foregroundColor(Color.red)
                     .frame(width: 50, height: 50, alignment: .center)
                 VStack (alignment: .leading, spacing: 4, content: {
                     
@@ -112,7 +108,6 @@ struct TopPlayedSongsViewGroup : View{
                 Image("spotifyicon")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .foregroundColor(Color.red)
                     .frame(width: 50, height: 50, alignment: .center)
                 VStack (alignment: .leading, spacing: 4, content: {
                     
@@ -124,8 +119,10 @@ struct TopPlayedSongsViewGroup : View{
                 
             })
             
-        }.frame(width: 350, height: nil, alignment: .top)
+        }.frame(width: 350, height: 200, alignment: .top)
         .background(Color.clear)
+        .listStyle(InsetGroupedListStyle())
+        .cornerRadius(12)
         .onAppear(perform: {
             UITableView.appearance().contentInset.top = -35
         })
