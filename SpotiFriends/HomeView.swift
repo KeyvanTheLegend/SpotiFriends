@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct HomeView : View {
+    
+    init(){
+        UITableView.appearance().contentInset.top = -35
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
         NavigationView{
             VStack(alignment: .leading, spacing: 0, content: {
