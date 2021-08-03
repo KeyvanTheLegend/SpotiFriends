@@ -15,6 +15,7 @@ struct HomeView : View {
                 
                 VStack(alignment: .leading, spacing: nil, content: {
                     MoodeView()
+                    TopPlayedSongsViewGroup()
 
                 })
                 .background(Color.LightGray)
@@ -61,5 +62,65 @@ struct MoodeView : View {
             .cornerRadius(12)
             .aspectRatio(contentMode: .fill)
             .padding(16)
+    }
+}
+struct TopPlayedSongsViewGroup : View{
+    var body: some View{
+        Text("Top Played Songs")
+            .padding([.leading,.trailing],16)
+            .foregroundColor(.white)
+            .font(.title3)
+        List {
+            HStack(content: {
+                Image("spotifyicon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .foregroundColor(Color.red)
+                    .frame(width: 50, height: 50, alignment: .center)
+                VStack (alignment: .leading, spacing: 4, content: {
+                    
+                    Text("Song Name")
+                        .font(.title3)
+                    Text("Singer name")
+                        .font(.caption)
+                })
+                
+            })
+            HStack(content: {
+                Image("spotifyicon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .foregroundColor(Color.red)
+                    .frame(width: 50, height: 50, alignment: .center)
+                VStack (alignment: .leading, spacing: 4, content: {
+                    
+                    Text("Song Name")
+                        .font(.title3)
+                    Text("Singer name")
+                        .font(.caption)
+                })
+                
+            })
+            HStack(content: {
+                Image("spotifyicon")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .foregroundColor(Color.red)
+                    .frame(width: 50, height: 50, alignment: .center)
+                VStack (alignment: .leading, spacing: 4, content: {
+                    
+                    Text("Song Name")
+                        .font(.title3)
+                    Text("Singer name")
+                        .font(.caption)
+                })
+                
+            })
+            
+        }.frame(width: 350, height: nil, alignment: .top)
+        .background(Color.clear)
+        .onAppear(perform: {
+            UITableView.appearance().contentInset.top = -35
+        })
     }
 }
