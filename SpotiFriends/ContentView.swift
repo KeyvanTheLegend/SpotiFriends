@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct LoginView: View {
     @State private var isLogin = false
     @State var username : String = ""
     @State var password :String = ""
-
+    
     
     init(){
         UINavigationBar.setAnimationsEnabled(false)
@@ -26,40 +26,10 @@ struct ContentView: View {
                 Group{
                     UsernameTextField(username: $username)
                     PasswordTextField(password: $password)
-
-                    Button(action: {
-                        //self.isLogin = true
-                        print("HI \(username)")
-
-                        
-                    }, label: {
-                        Text("Login")
-                            .fontWeight(.medium)
-                    })
-                    
-                    .padding(EdgeInsets(top: 12, leading: 64, bottom: 12, trailing: 64))
-                    .background(Color.green)
-                    .foregroundColor(.black)
-                    .cornerRadius(8)
-                    .clipped()
+                    LoginButton(isLogin: $isLogin, username: $username)
                 }
-                
-                
-                
                 Spacer()
-                
-                HStack(alignment: .center, spacing: 8, content: {
-                    Text("Don't have an account ?")
-                        .foregroundColor(.white)
-                    Button(action: {
-                        
-                    }, label: {
-                        Text("Signup")
-                            .foregroundColor(.green)
-                            .padding(3)
-                    })
-                    
-                })
+                SignupView()
                 Spacer()
                 Group{
                     NavigationLink(
@@ -69,7 +39,7 @@ struct ContentView: View {
                 }
                 
             }
-            .background(RadialGradient(gradient: Gradient(colors: [Color.BackgroundColor.opacity(0.93), Color.BackgroundColor]), center: .center, startRadius: 1, endRadius: 500))
+            .background(Color.GradientBackground)
             .ignoresSafeArea()
             
             
@@ -79,6 +49,11 @@ struct ContentView: View {
     
     
 }
+//struct GradientBackground : View {
+//    var body: some View {
+//        RadialGradient(gradient: Gradient(colors: [Color.BackgroundColor.opacity(0.93), Color.BackgroundColor]), center: .center, startRadius: 1, endRadius: 500)
+//    }
+//}
 struct Logo : View {
     var body: some View {
         Group{
@@ -93,6 +68,43 @@ struct Logo : View {
                 .foregroundColor(.green)
                 .font(.system(size: 16, weight: .bold, design: .rounded))
         }
+    }
+}
+struct SignupView : View {
+    var body: some View {
+        HStack(alignment: .center, spacing: 8, content: {
+            Text("Don't have an account ?")
+                .foregroundColor(.white)
+            Button(action: {
+                
+            }, label: {
+                Text("Signup")
+                    .foregroundColor(.green)
+                    .padding(3)
+            })
+            
+        })
+    }
+}
+struct LoginButton : View {
+    @Binding var isLogin : Bool
+    @Binding var username : String
+    var body: some View{
+        Button(action: {
+            self.isLogin = true
+            print("HI \(username)")
+            
+            
+        }, label: {
+            Text("Login")
+                .fontWeight(.medium)
+        })
+        
+        .padding(EdgeInsets(top: 12, leading: 64, bottom: 12, trailing: 64))
+        .background(Color.green)
+        .foregroundColor(.black)
+        .cornerRadius(8)
+        .clipped()
     }
 }
 struct UsernameTextField: View {
@@ -172,7 +184,8 @@ struct HomeView : View {
             .background(RadialGradient(gradient: Gradient(colors: [Color.BackgroundColor.opacity(0.93), Color.BackgroundColor]), center: .center, startRadius: 1, endRadius: 500))
             .ignoresSafeArea()
         }
-        .navigationBarHidden(false)
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         
     }
     
@@ -182,7 +195,8 @@ struct HomeView : View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            
+            LoginView()
                 .previewDevice("iPhone 12 Pro Max")
         }
     }
