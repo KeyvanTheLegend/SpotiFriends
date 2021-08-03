@@ -32,14 +32,14 @@ struct HomeView_Previews: PreviewProvider {
 
 struct HeaderGroupView : View {
     var body: some View{
-    HStack(content: {
-        Text("Today Frinds Mood")
-            .padding(16)
-            .foregroundColor(.white)
-            .font(.title)
-        
-        Spacer()
-    })
-    .padding(.top,32)
+        HStack(content: {
+            Text("Today Frinds Mood")
+                .padding(16)
+                .foregroundColor(.white)
+                .font(.title)
+            
+            Spacer()
+        })
+        .padding(.top,32)
     }
 }
