@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
+    
     @State private var isLogin = false
     @State var username : String = ""
     @State var password :String = ""
-    
     
     init(){
         UINavigationBar.setAnimationsEnabled(false)
@@ -21,7 +21,7 @@ struct LoginView: View {
         NavigationView {
             VStack(alignment: .center) {
                 Spacer()
-                Logo()
+                LogoViewGroup()
                 Spacer()
                 Group{
                     UsernameTextField(username: $username)
@@ -29,32 +29,34 @@ struct LoginView: View {
                     LoginButton(isLogin: $isLogin, username: $username)
                 }
                 Spacer()
-                SignupView()
+                SignupViewGroup()
                 Spacer()
                 Group{
+                    /// Navigation Links
                     NavigationLink(
                         destination: HomeView(),
                         isActive: $isLogin,
                         label: {EmptyView()})
                 }
-                
             }
             .background(Color.GradientBackground)
             .ignoresSafeArea()
             
-            
         }.navigationBarHidden(false)
-        
     }
-    
-    
 }
-//struct GradientBackground : View {
-//    var body: some View {
-//        RadialGradient(gradient: Gradient(colors: [Color.BackgroundColor.opacity(0.93), Color.BackgroundColor]), center: .center, startRadius: 1, endRadius: 500)
-//    }
-//}
-struct Logo : View {
+
+struct LoginView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            
+            LoginView()
+                .previewDevice("iPhone 12 Pro Max")
+        }
+    }
+}
+
+struct LogoViewGroup : View {
     var body: some View {
         Group{
             Image("spotifyicon")
@@ -70,7 +72,7 @@ struct Logo : View {
         }
     }
 }
-struct SignupView : View {
+struct SignupViewGroup : View {
     var body: some View {
         HStack(alignment: .center, spacing: 8, content: {
             Text("Don't have an account ?")
@@ -87,8 +89,10 @@ struct SignupView : View {
     }
 }
 struct LoginButton : View {
+    
     @Binding var isLogin : Bool
     @Binding var username : String
+    
     var body: some View{
         Button(action: {
             self.isLogin = true
@@ -108,6 +112,7 @@ struct LoginButton : View {
     }
 }
 struct UsernameTextField: View {
+    
     @Binding var username  : String
     
     var body : some View {
@@ -137,7 +142,9 @@ struct UsernameTextField: View {
     }
 }
 struct PasswordTextField : View {
+    
     @Binding var password :String
+    
     var body: some View {
         HStack(alignment: .center, spacing: 24, content: {
             Spacer()
@@ -168,48 +175,5 @@ struct PasswordTextField : View {
             
             Spacer()
         })
-    }
-}
-struct HomeView : View {
-    var body: some View {
-        NavigationView{
-            VStack(alignment: .center, spacing: 10, content: {
-                Text("Test")
-                Text("Test")
-                Text("Test")
-                Text("Test")
-                
-            })
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            .background(RadialGradient(gradient: Gradient(colors: [Color.BackgroundColor.opacity(0.93), Color.BackgroundColor]), center: .center, startRadius: 1, endRadius: 500))
-            .ignoresSafeArea()
-        }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
-        
-    }
-    
-    
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            
-            LoginView()
-                .previewDevice("iPhone 12 Pro Max")
-        }
-    }
-}
-extension View {
-    func placeholder<Content: View>(
-        when shouldShow: Bool,
-        alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View {
-        
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
-        }
     }
 }
