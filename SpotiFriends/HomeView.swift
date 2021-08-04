@@ -18,14 +18,8 @@ struct HomeView : View {
         NavigationView{
             VStack(alignment: .leading, spacing: 0, content: {
                 HeaderGroupView()
-                VStack(alignment: .leading, spacing: nil, content: {
-                    MoodeView()
-                    TopPlayedSongsViewGroup()
-                })
-                .background(Color.clear)
-                .cornerRadius(12)
-                .padding([.leading,.trailing],16)
-                .clipped()
+                MoodeView()
+                TopPlayedSongsViewGroup()
                 Spacer()
             })
             .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
@@ -33,7 +27,7 @@ struct HomeView : View {
             .ignoresSafeArea()
         }
         .navigationBarHidden(true)
-
+        
         
     }
 }
@@ -41,7 +35,7 @@ struct HomeView : View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .previewDevice("iPhone 8")
+            .previewDevice("iPhone 12 Pro")
     }
 }
 
@@ -60,9 +54,9 @@ struct HeaderGroupView : View {
 }
 struct MoodeView : View {
     var body: some View {
-        Image("")
+        Image("mood2")
             .resizable()
-            .frame(width: 315, height: 150, alignment: .center)
+            .frame(width: 350, height: 150, alignment: .center)
             .background(Color.BackgroundColor.opacity(0.7))
             .cornerRadius(12)
             .aspectRatio(contentMode: .fill)
@@ -72,17 +66,21 @@ struct MoodeView : View {
 struct TopPlayedSongsViewGroup : View{
     var body: some View{
         Text("Top Played Songs")
-            .padding([.leading,.trailing],16)
+            .padding([.leading,.trailing,.bottom],16)
             .foregroundColor(.white)
             .font(.title3)
         List {
             HStack(content: {
-                Image("spotifyicon")
+                Image("music1")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .padding([.top,.bottom, .trailing],8)
-                VStack (alignment: .leading, spacing: 4, content: {
+                    .frame(width: 80, height: 80, alignment: .center)
+                    .cornerRadius(12)
+                    .padding([.trailing],16)
+                    .padding([.bottom,.top],8)
+                    .clipped()
+
+                VStack (alignment: .leading, spacing: 6, content: {
                     Text("Song Name")
                         .foregroundColor(.white)
                         .font(.title3.weight(.medium))
@@ -93,13 +91,19 @@ struct TopPlayedSongsViewGroup : View{
                 
             })
             .listRowBackground(Color.cellBackgroundColor)
+            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
+
             HStack(content: {
-                Image("spotifyicon")
+                Image("music2")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .padding([.top,.bottom, .trailing],8)
-                VStack (alignment: .leading, spacing: 4, content: {
+                    .frame(width: 80, height: 80, alignment: .center)
+                    .cornerRadius(12)
+                    .padding([.trailing],16)
+                    .padding([.bottom,.top],8)
+                    .clipped()
+
+                VStack (alignment: .leading, spacing: 6, content: {
                     Text("Song Name")
                         .foregroundColor(.white)
                         .font(.title3.weight(.medium))
@@ -110,13 +114,19 @@ struct TopPlayedSongsViewGroup : View{
                 
             })
             .listRowBackground(Color.cellBackgroundColor)
+            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
+
             HStack(content: {
-                Image("spotifyicon")
+                Image("music3")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50, alignment: .center)
-                    .padding([.top,.bottom, .trailing],8)
-                VStack (alignment: .leading, spacing: 4, content: {
+                    .frame(width: 80, height: 80, alignment: .center)
+                    .cornerRadius(12)
+                    .padding([.trailing],16)
+                    .padding([.bottom,.top],8)
+                    .clipped()
+
+                VStack (alignment: .leading, spacing: 6, content: {
                     Text("Song Name")
                         .foregroundColor(.white)
                         .font(.title3.weight(.medium))
@@ -127,10 +137,12 @@ struct TopPlayedSongsViewGroup : View{
                 
             })
             .listRowBackground(Color.cellBackgroundColor)
+            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
+
             SeeMoreButton()
                 .listRowBackground(Color.cellBackgroundColor)
-
-        }.frame(width: 350, height: 350, alignment: .top)
+            
+        }.frame(width: 385, height: 390, alignment: .top)
         .background(Color.clear)
         .listStyle(InsetGroupedListStyle())
         .cornerRadius(12)
@@ -142,7 +154,7 @@ struct TopPlayedSongsViewGroup : View{
 struct SeeMoreButton : View {
     var body: some View {
         Button("See More") {
-        }.frame(width: 270, height: 60, alignment: .center)
+        }.frame(width: 300, height: 60, alignment: .center)
         .background(Color.green)
         .foregroundColor(.white)
         .cornerRadius(12)
