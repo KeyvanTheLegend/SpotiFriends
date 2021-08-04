@@ -11,7 +11,7 @@ import SwiftUI
 struct SpotiFriendsApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            HomeView()            
         }
     }
 }

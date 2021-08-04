@@ -12,26 +12,44 @@ struct HomeView : View {
     init(){
         UITableView.appearance().contentInset.top = -35
         UITableView.appearance().backgroundColor = .clear
+        
+        let appearence = UINavigationBarAppearance()
+        appearence.configureWithOpaqueBackground()
+        appearence.backgroundColor = #colorLiteral(red: 0.09018553048, green: 0.09020198137, blue: 0.09017995745, alpha: 1).withAlphaComponent(0.8)
+        appearence.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearence.largeTitleTextAttributes = [.foregroundColor:UIColor.white]
+        appearence.backgroundEffect = UIBlurEffect(style: .dark)
+        
+        UINavigationBar.appearance().standardAppearance = appearence
+        UINavigationBar.appearance().scrollEdgeAppearance = appearence
+        UINavigationBar.appearance().compactAppearance = appearence
+        UINavigationBar.appearance().isTranslucent = true
     }
     
     var body: some View {
+        NavigationView {
             ScrollView(.vertical){
-            VStack(alignment: .leading, spacing: 0, content: {
-                HeaderGroupView()
-                MoodeView()
-                TopPlayedSongsViewGroup()
-                Spacer()
+                VStack(alignment: .leading, spacing: 0, content: {
+                    MoodeView()
+                    TopPlayedSongsViewGroup()
+                    Spacer()
+                    
+                    ForEach(0..<1) { i in
+                        
+                        Text("\(i)")
+                            .frame(maxWidth: .infinity)
+                            .background(Color.green)
+                            .hidden()
+                    }
+                })
+                
+            }.fixFlickering(configurator: { scrollview in
+                scrollview.background(Color.GradientBackground)
             })
-
-            .ignoresSafeArea()
-            }
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 20, alignment: .top)
-            .ignoresSafeArea()
-            .background(Color.GradientBackground)
-            .navigationBarHidden(true)
-
-
-        
+            .navigationTitle("Friends")
+            
+            
+        }
         
     }
 }
@@ -64,7 +82,7 @@ struct MoodeView : View {
             .background(Color.BackgroundColor.opacity(0.7))
             .cornerRadius(12)
             .aspectRatio(contentMode: .fill)
-            .padding([.leading,.trailing,.bottom],16)
+            .padding([.leading,.trailing,.bottom,.top],16)
     }
 }
 struct TopPlayedSongsViewGroup : View{
@@ -83,7 +101,7 @@ struct TopPlayedSongsViewGroup : View{
                     .padding([.trailing],16)
                     .padding([.bottom,.top],16)
                     .clipped()
-
+                
                 VStack (alignment: .leading, spacing: 6, content: {
                     Text("Song Name")
                         .foregroundColor(.white)
@@ -96,7 +114,7 @@ struct TopPlayedSongsViewGroup : View{
             })
             .listRowBackground(Color.cellBackgroundColor)
             .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
-
+            
             HStack(content: {
                 Image("music2")
                     .resizable()
@@ -106,7 +124,7 @@ struct TopPlayedSongsViewGroup : View{
                     .padding([.trailing],16)
                     .padding([.bottom,.top],16)
                     .clipped()
-
+                
                 VStack (alignment: .leading, spacing: 6, content: {
                     Text("Song Name")
                         .foregroundColor(.white)
@@ -119,7 +137,7 @@ struct TopPlayedSongsViewGroup : View{
             })
             .listRowBackground(Color.cellBackgroundColor)
             .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
-
+            
             HStack(content: {
                 Image("music3")
                     .resizable()
@@ -129,7 +147,7 @@ struct TopPlayedSongsViewGroup : View{
                     .padding([.trailing],16)
                     .padding([.bottom,.top],16)
                     .clipped()
-
+                
                 VStack (alignment: .leading, spacing: 6, content: {
                     Text("Song Name")
                         .foregroundColor(.white)
@@ -142,7 +160,7 @@ struct TopPlayedSongsViewGroup : View{
             })
             .listRowBackground(Color.cellBackgroundColor)
             .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
-
+            
             SeeMoreButton()
                 .listRowBackground(Color.cellBackgroundColor)
             
