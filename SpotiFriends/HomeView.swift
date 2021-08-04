@@ -21,9 +21,8 @@ struct HomeView : View {
                 VStack(alignment: .leading, spacing: nil, content: {
                     MoodeView()
                     TopPlayedSongsViewGroup()
-                    SeeMoreButton()
                 })
-                .background(Color.LightGray)
+                .background(Color.clear)
                 .cornerRadius(12)
                 .padding([.leading,.trailing],16)
                 .clipped()
@@ -42,6 +41,7 @@ struct HomeView : View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .previewDevice("iPhone 8")
     }
 }
 
@@ -81,45 +81,56 @@ struct TopPlayedSongsViewGroup : View{
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50, alignment: .center)
+                    .padding([.top,.bottom, .trailing],8)
                 VStack (alignment: .leading, spacing: 4, content: {
-                    
                     Text("Song Name")
-                        .font(.title3)
+                        .foregroundColor(.white)
+                        .font(.title3.weight(.medium))
                     Text("Singer name")
                         .font(.caption)
+                        .foregroundColor(Color.captionTextColor)
                 })
                 
             })
+            .listRowBackground(Color.cellBackgroundColor)
             HStack(content: {
                 Image("spotifyicon")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50, alignment: .center)
+                    .padding([.top,.bottom, .trailing],8)
                 VStack (alignment: .leading, spacing: 4, content: {
-                    
                     Text("Song Name")
-                        .font(.title3)
+                        .foregroundColor(.white)
+                        .font(.title3.weight(.medium))
                     Text("Singer name")
                         .font(.caption)
+                        .foregroundColor(Color.captionTextColor)
                 })
                 
             })
+            .listRowBackground(Color.cellBackgroundColor)
             HStack(content: {
                 Image("spotifyicon")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 50, height: 50, alignment: .center)
+                    .padding([.top,.bottom, .trailing],8)
                 VStack (alignment: .leading, spacing: 4, content: {
-                    
                     Text("Song Name")
-                        .font(.title3)
+                        .foregroundColor(.white)
+                        .font(.title3.weight(.medium))
                     Text("Singer name")
                         .font(.caption)
+                        .foregroundColor(Color.captionTextColor)
                 })
                 
             })
-            
-        }.frame(width: 350, height: 200, alignment: .top)
+            .listRowBackground(Color.cellBackgroundColor)
+            SeeMoreButton()
+                .listRowBackground(Color.cellBackgroundColor)
+
+        }.frame(width: 350, height: 350, alignment: .top)
         .background(Color.clear)
         .listStyle(InsetGroupedListStyle())
         .cornerRadius(12)
@@ -131,12 +142,11 @@ struct TopPlayedSongsViewGroup : View{
 struct SeeMoreButton : View {
     var body: some View {
         Button("See More") {
-            
-        }.frame(width: 320, height: 60, alignment: .center)
+        }.frame(width: 270, height: 60, alignment: .center)
         .background(Color.green)
         .foregroundColor(.white)
         .cornerRadius(12)
         .font(.headline)
-        .padding([.leading,.trailing,.bottom],16)
+        .padding([.trailing,.top,.bottom],16)
     }
 }

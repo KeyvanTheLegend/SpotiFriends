@@ -11,6 +11,9 @@ import SwiftUI
 extension Color {
     static let BackgroundColor = Color("BackgroundColor")
     static let LightGray = Color("LightGray")
+    static let cellBackgroundColor = Color("cellBackgroundColor")
+    static let captionTextColor = Color("captionTextColor")
+
     
     static let GradientBackground = RadialGradient(
         gradient: Gradient(
