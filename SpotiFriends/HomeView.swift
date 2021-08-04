@@ -15,18 +15,22 @@ struct HomeView : View {
     }
     
     var body: some View {
-        NavigationView{
+            ScrollView(.vertical){
             VStack(alignment: .leading, spacing: 0, content: {
                 HeaderGroupView()
                 MoodeView()
                 TopPlayedSongsViewGroup()
                 Spacer()
             })
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center)
-            .background(Color.GradientBackground)
+
             .ignoresSafeArea()
-        }
-        .navigationBarHidden(true)
+            }
+            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 20, alignment: .top)
+            .ignoresSafeArea()
+            .background(Color.GradientBackground)
+            .navigationBarHidden(true)
+
+
         
         
     }
@@ -60,7 +64,7 @@ struct MoodeView : View {
             .background(Color.BackgroundColor.opacity(0.7))
             .cornerRadius(12)
             .aspectRatio(contentMode: .fill)
-            .padding(16)
+            .padding([.leading,.trailing,.bottom],16)
     }
 }
 struct TopPlayedSongsViewGroup : View{
@@ -77,7 +81,7 @@ struct TopPlayedSongsViewGroup : View{
                     .frame(width: 80, height: 80, alignment: .center)
                     .cornerRadius(12)
                     .padding([.trailing],16)
-                    .padding([.bottom,.top],8)
+                    .padding([.bottom,.top],16)
                     .clipped()
 
                 VStack (alignment: .leading, spacing: 6, content: {
@@ -100,7 +104,7 @@ struct TopPlayedSongsViewGroup : View{
                     .frame(width: 80, height: 80, alignment: .center)
                     .cornerRadius(12)
                     .padding([.trailing],16)
-                    .padding([.bottom,.top],8)
+                    .padding([.bottom,.top],16)
                     .clipped()
 
                 VStack (alignment: .leading, spacing: 6, content: {
@@ -123,7 +127,7 @@ struct TopPlayedSongsViewGroup : View{
                     .frame(width: 80, height: 80, alignment: .center)
                     .cornerRadius(12)
                     .padding([.trailing],16)
-                    .padding([.bottom,.top],8)
+                    .padding([.bottom,.top],16)
                     .clipped()
 
                 VStack (alignment: .leading, spacing: 6, content: {
@@ -142,13 +146,14 @@ struct TopPlayedSongsViewGroup : View{
             SeeMoreButton()
                 .listRowBackground(Color.cellBackgroundColor)
             
-        }.frame(width: 385, height: 390, alignment: .top)
+        }.frame(width: 385, height: 450, alignment: .top)
         .background(Color.clear)
         .listStyle(InsetGroupedListStyle())
         .cornerRadius(12)
         .onAppear(perform: {
             UITableView.appearance().contentInset.top = -35
         })
+        .hasScrollEnabled(false)
     }
 }
 struct SeeMoreButton : View {
@@ -160,5 +165,13 @@ struct SeeMoreButton : View {
         .cornerRadius(12)
         .font(.headline)
         .padding([.trailing,.top,.bottom],16)
+    }
+}
+extension View {
+    
+    func hasScrollEnabled(_ value: Bool) -> some View {
+        self.onAppear {
+            UITableView.appearance().isScrollEnabled = value
+        }
     }
 }
