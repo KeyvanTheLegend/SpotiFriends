@@ -28,28 +28,37 @@ struct HomeView : View {
     
     var body: some View {
         NavigationView {
-            ScrollView(.vertical){
-                VStack(alignment: .leading, spacing: 0, content: {
-                    MoodeView()
-                    TopPlayedSongsViewGroup()
-                    Spacer()
-                    
-                    ForEach(0..<1) { i in
-                        
-                        Text("\(i)")
-                            .frame(maxWidth: .infinity)
-                            .background(Color.green)
-                            .hidden()
-                    }
-                })
                 
-            }.fixFlickering(configurator: { scrollview in
-                scrollview.background(Color.GradientBackground)
-            })
-            .navigationTitle("Friends")
-            
-            
-        }
+                ScrollView(.vertical){
+                    GeometryReader { geometry in
+
+                    VStack(alignment: .leading, spacing: 0, content: {
+                        MoodeView()
+                            .frame(width: geometry.size.width,
+                                   height: geometry.size.width / 2.2,
+                                   alignment: .center)
+                        TopPlayedSongsViewGroup()
+                            .frame(width: geometry.size.width,
+                                   alignment: .center)
+                        Spacer()
+                        
+                        ForEach(0..<1) { i in
+                            
+                            Text("\(i)")
+                                .frame(maxWidth: .infinity)
+                                .background(Color.green)
+                                .hidden()
+                        }
+                    })
+                    }
+                    
+                }.fixFlickering(configurator: { scrollview in
+                    scrollview.background(Color.GradientBackground)
+                })
+                .navigationTitle("Friends")
+
+            }
+        
         
     }
 }
@@ -57,7 +66,7 @@ struct HomeView : View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
-            .previewDevice("iPhone 12 Pro")
+            .previewDevice("iPhone 8")
     }
 }
 
@@ -76,114 +85,130 @@ struct HeaderGroupView : View {
 }
 struct MoodeView : View {
     var body: some View {
-        Image("mood2")
-            .resizable()
-            .frame(width: 350, height: 150, alignment: .center)
-            .background(Color.BackgroundColor.opacity(0.7))
-            .cornerRadius(12)
-            .aspectRatio(contentMode: .fill)
-            .padding([.leading,.trailing,.bottom,.top],16)
+        GeometryReader { geometry in
+            VStack (alignment : .center) {
+                Image("mood2")
+                    .resizable()
+                    .frame(width: abs(geometry.size.width - 32), height: abs(geometry.size.height - 32), alignment: .center)
+                    .background(Color.BackgroundColor.opacity(0.7))
+                    .cornerRadius(12)
+                    .aspectRatio(contentMode: .fill)
+            }
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            
+        }
     }
 }
 struct TopPlayedSongsViewGroup : View{
     var body: some View{
-        Text("Top Played Songs")
-            .padding([.leading,.trailing,.bottom],16)
-            .foregroundColor(.white)
-            .font(.title3)
-        List {
-            HStack(content: {
-                Image("music1")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 80, height: 80, alignment: .center)
-                    .cornerRadius(12)
-                    .padding([.trailing],16)
-                    .padding([.bottom,.top],16)
-                    .clipped()
-                
-                VStack (alignment: .leading, spacing: 6, content: {
-                    Text("Song Name")
-                        .foregroundColor(.white)
-                        .font(.title3.weight(.medium))
-                    Text("Singer name")
-                        .font(.caption)
-                        .foregroundColor(Color.captionTextColor)
+        GeometryReader { geometry in
+            VStack (alignment : .leading) {
+                Text("Top Played Songs")
+                    .padding([.horizontal],16)
+                    .padding([.vertical],8)
+
+                    .foregroundColor(.white)
+                    .font(.title3)
+                List {
+                    HStack(content: {
+                        Image("music1")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 70, height: 70, alignment: .center)
+                            .cornerRadius(12)
+                            .padding([.trailing],16)
+                            .padding([.bottom,.top],16)
+                            .clipped()
+                        
+                        VStack (alignment: .leading, spacing: 6, content: {
+                            Text("Song Name")
+                                .foregroundColor(.white)
+                                .font(.title3.weight(.medium))
+                            Text("Singer name")
+                                .font(.caption)
+                                .foregroundColor(Color.captionTextColor)
+                        })
+                        
+                    })
+                    .listRowBackground(Color.cellBackgroundColor)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
+                    
+                    HStack(content: {
+                        Image("music2")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 70, height: 70, alignment: .center)
+                            .cornerRadius(12)
+                            .padding([.trailing],16)
+                            .padding([.bottom,.top],16)
+                            .clipped()
+                        
+                        VStack (alignment: .leading, spacing: 6, content: {
+                            Text("Song Name")
+                                .foregroundColor(.white)
+                                .font(.title3.weight(.medium))
+                            Text("Singer name")
+                                .font(.caption)
+                                .foregroundColor(Color.captionTextColor)
+                        })
+                        
+                    })
+                    .listRowBackground(Color.cellBackgroundColor)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
+                    
+                    HStack(content: {
+                        Image("music3")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 70, height: 70, alignment: .center)
+                            .cornerRadius(12)
+                            .padding([.trailing],16)
+                            .padding([.bottom,.top],16)
+                            .clipped()
+                        
+                        VStack (alignment: .leading, spacing: 6, content: {
+                            Text("Song Name")
+                                .foregroundColor(.white)
+                                .font(.title3.weight(.medium))
+                            Text("Singer name")
+                                .font(.caption)
+                                .foregroundColor(Color.captionTextColor)
+                        })
+                        
+                    })
+                    .listRowBackground(Color.cellBackgroundColor)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
+                    
+                    SeeMoreButton()
+                        .listRowBackground(Color.cellBackgroundColor)
+                        .frame(height: 64 + 16)
+                    
+                }.frame(width: geometry.size.width, height: 500, alignment: .top)
+                .background(Color.clear)
+                .listStyle(InsetGroupedListStyle())
+                .cornerRadius(12)
+                .onAppear(perform: {
+                    UITableView.appearance().contentInset.top = -35
                 })
-                
-            })
-            .listRowBackground(Color.cellBackgroundColor)
-            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
-            
-            HStack(content: {
-                Image("music2")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 80, height: 80, alignment: .center)
-                    .cornerRadius(12)
-                    .padding([.trailing],16)
-                    .padding([.bottom,.top],16)
-                    .clipped()
-                
-                VStack (alignment: .leading, spacing: 6, content: {
-                    Text("Song Name")
-                        .foregroundColor(.white)
-                        .font(.title3.weight(.medium))
-                    Text("Singer name")
-                        .font(.caption)
-                        .foregroundColor(Color.captionTextColor)
-                })
-                
-            })
-            .listRowBackground(Color.cellBackgroundColor)
-            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
-            
-            HStack(content: {
-                Image("music3")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 80, height: 80, alignment: .center)
-                    .cornerRadius(12)
-                    .padding([.trailing],16)
-                    .padding([.bottom,.top],16)
-                    .clipped()
-                
-                VStack (alignment: .leading, spacing: 6, content: {
-                    Text("Song Name")
-                        .foregroundColor(.white)
-                        .font(.title3.weight(.medium))
-                    Text("Singer name")
-                        .font(.caption)
-                        .foregroundColor(Color.captionTextColor)
-                })
-                
-            })
-            .listRowBackground(Color.cellBackgroundColor)
-            .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 8))
-            
-            SeeMoreButton()
-                .listRowBackground(Color.cellBackgroundColor)
-            
-        }.frame(width: 385, height: 450, alignment: .top)
-        .background(Color.clear)
-        .listStyle(InsetGroupedListStyle())
-        .cornerRadius(12)
-        .onAppear(perform: {
-            UITableView.appearance().contentInset.top = -35
-        })
-        .hasScrollEnabled(false)
+                .hasScrollEnabled(false)
+            }
+        }
     }
 }
 struct SeeMoreButton : View {
     var body: some View {
-        Button("See More") {
-        }.frame(width: 300, height: 60, alignment: .center)
-        .background(Color.green)
-        .foregroundColor(.white)
-        .cornerRadius(12)
-        .font(.headline)
-        .padding([.trailing,.top,.bottom],16)
+        GeometryReader { geometry in
+            VStack (alignment: .center) {
+                Button("See More") {
+                }.frame(width: geometry.size.width - 32, height: 60)
+                .background(Color.green)
+                .foregroundColor(.white)
+                .cornerRadius(12)
+                .font(.headline)
+            }.frame(width: geometry.size.width, height: 64 + 16)
+        }
     }
+    
 }
 extension View {
     

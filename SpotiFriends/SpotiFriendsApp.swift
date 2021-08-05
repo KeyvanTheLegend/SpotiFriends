@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 @main
 struct SpotiFriendsApp: App {
     var body: some Scene {
