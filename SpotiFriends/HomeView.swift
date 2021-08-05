@@ -14,11 +14,11 @@ struct HomeView : View {
         UITableView.appearance().backgroundColor = .clear
         
         let appearence = UINavigationBarAppearance()
-        appearence.configureWithOpaqueBackground()
-        appearence.backgroundColor = #colorLiteral(red: 0.09018553048, green: 0.09020198137, blue: 0.09017995745, alpha: 1).withAlphaComponent(0.8)
+        appearence.configureWithTransparentBackground()
+        appearence.backgroundEffect = UIBlurEffect(style: .dark)
+        appearence.backgroundColor = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1).withAlphaComponent(0.7)
         appearence.titleTextAttributes = [.foregroundColor: UIColor.white]
         appearence.largeTitleTextAttributes = [.foregroundColor:UIColor.white]
-        appearence.backgroundEffect = UIBlurEffect(style: .dark)
         
         UINavigationBar.appearance().standardAppearance = appearence
         UINavigationBar.appearance().scrollEdgeAppearance = appearence
