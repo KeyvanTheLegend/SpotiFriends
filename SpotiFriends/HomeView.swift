@@ -28,9 +28,9 @@ struct HomeView : View {
     
     var body: some View {
         NavigationView {
-                
+            GeometryReader { geometry in
+
                 ScrollView(.vertical){
-                    GeometryReader { geometry in
 
                     VStack(alignment: .leading, spacing: 0, content: {
                         MoodeView()
@@ -39,6 +39,7 @@ struct HomeView : View {
                                    alignment: .center)
                         TopPlayedSongsViewGroup()
                             .frame(width: geometry.size.width,
+                                   height: 450,
                                    alignment: .center)
                         Spacer()
                         
@@ -50,7 +51,7 @@ struct HomeView : View {
                                 .hidden()
                         }
                     })
-                    }
+                    
                     
                 }.fixFlickering(configurator: { scrollview in
                     scrollview.background(Color.GradientBackground)
@@ -59,6 +60,7 @@ struct HomeView : View {
 
             }
         
+    }
         
     }
 }
@@ -181,7 +183,7 @@ struct TopPlayedSongsViewGroup : View{
                     
                     SeeMoreButton()
                         .listRowBackground(Color.cellBackgroundColor)
-                        .frame(height: 64 + 16)
+                        .frame(height: 64 + 22)
                     
                 }.frame(width: geometry.size.width, height: 500, alignment: .top)
                 .background(Color.clear)
